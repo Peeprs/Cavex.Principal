@@ -1,4 +1,4 @@
-﻿using Cavex.Principal.ApiClients.ServicioAClientes;
+using Cavex.Principal.ApiClients.ServicioAClientes;
 using Cavex.Principal.Common;
 using Cavex.Principal.Models.ServicioAClientes;
 using Cavex.Principal.Services.Interfaces;
@@ -39,7 +39,7 @@ namespace Cavex.Principal.Services.Implementations
             CancellationToken cancellationToken = default)
         {
             return await ExecuteAsync(
-                () => _servicioAClientesApi.CreateAsync(request, cancellationToken),
+                () => _servicioAClientesApi.CreateAsync(RequestWrapper<ServicioAClienteDto>.Create(request), cancellationToken),
                 "No fue posible crear el servicio a cliente.");
         }
 
@@ -49,7 +49,7 @@ namespace Cavex.Principal.Services.Implementations
             CancellationToken cancellationToken = default)
         {
             return await ExecuteAsync(
-                () => _servicioAClientesApi.UpdateAsync(id, request, cancellationToken),
+                () => _servicioAClientesApi.UpdateAsync(id, RequestWrapper<ServicioAClienteDto>.Create(request), cancellationToken),
                 "No fue posible actualizar el servicio a cliente.");
         }
 
